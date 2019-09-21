@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgruundBlack"
+    tools:context=".Menu_Principal_menu">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:text="@string/Cat"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/cat1"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:background="@drawable/pupusas"
+                android:text="Pupusas"
+                android:textColor="@color/colorAccent"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/cat2"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:background="@drawable/hamburgesa"
+                android:text="Hamburguesas"
+                android:textColor="@color/colorAccent"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/cat3"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:background="@drawable/comichina"
+                android:text="Comida china"
+                android:textColor="@color/colorAccent"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
