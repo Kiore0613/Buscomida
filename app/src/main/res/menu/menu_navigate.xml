@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_search"
+        android:title="@string/search"/>
+
+    <item
+        android:id="@+id/navigation_restaurants"
+        android:title="@string/restaurants"
+        />
+
+    <item
+        android:id="@+id/navigation_near"
+        android:title="@string/near" />
+
+    <item
+        android:id="@+id/navigation_categories"
+        android:title="@string/categories"/>
+
+    <item
+        android:id="@+id/navigation_preferences"
+        android:title="@string/preferences"/>
+</menu>

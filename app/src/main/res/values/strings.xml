@@ -1,4 +1,17 @@
 <resources>
-    <string name="app_name">BusComida</string>
-    <string name="Cat">Categorias</string>
+    <string name="app_name">Buscomida</string>
+
+    <!-- header navigate -->
+    <string name="header">Buscomida</string>
+
+    <!-- Menu navigate view -->
+    <string name="search">Buscar</string>
+    <string name="restaurants">Restaurantes</string>
+    <string name="near">Cerca de mi</string>
+    <string name="categories">Categorias</string>
+    <string name="preferences">Preferencias</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_near_maps">Map</string>
 </resources>

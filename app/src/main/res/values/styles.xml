@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Style NavigateView -->
+    <style name="navigate" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+
 </resources>
