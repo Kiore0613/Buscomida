@@ -16,5 +16,12 @@
         <item name="android:background">@color/colorAccent</item>
     </style>
 
+    <style name="aboutText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_margin">4dp</item>
+
+    </style>
+
 
 </resources>
