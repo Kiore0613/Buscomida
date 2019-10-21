@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='BusComida_App_Electiva_android'
+rootProject.name='Buscomida'

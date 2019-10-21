@@ -1,4 +1,4 @@
-package com.example.buscomida_app_electiva_android;
+package com.example.buscomida;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.buscomida_app_electiva_android", appContext.getPackageName());
+        assertEquals("com.example.buscomida", appContext.getPackageName());
     }
 }

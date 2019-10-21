@@ -1,4 +1,4 @@
-package com.example.buscomida_app_electiva_android;
+package com.example.buscomida;
 
 import org.junit.Test;
 

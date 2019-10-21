@@ -1,4 +1,28 @@
 <resources>
-    <string name="app_name">BusComida</string>
-    <string name="Cat">Categorias</string>
+    <string name="app_name">Buscomida</string>
+
+    <!-- header navigate -->
+    <string name="header">Buscomida</string>
+
+    <!-- Integrantes -->
+    <string name="william">William Ernesto Castillo Diaz 17–4068–2015</string>
+    <string name="ricardo">Ricardo Ernesto Chicas Murcia 25–0723–2014</string>
+    <string name="aaron">Aaron Alejando Reynoza Valdez 25–0712–2015</string>
+    <string name="emerson">Emerson Mauricio Rivera Avalos 17–5074–2011</string>
+    <string name="manuel">Manuel Alexander Vasquez Rafaelano 25–0081–2015</string>
+    <string name="jesus">Jesus Ernesto Zelaya Garcia 25–3033–2015</string>
+
+    <string name="aboutText">Esta aplicacion fue desarrollada por: </string>
+
+    <!-- Menu navigate view -->
+    <string name="search">Buscar</string>
+    <string name="restaurants">Restaurantes</string>
+    <string name="near">Cerca de mi</string>
+    <string name="categories">Categorias</string>
+    <string name="preferences">Preferencias</string>
+    <string name="about">Acerca de</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_near_maps">Map</string>
 </resources>
