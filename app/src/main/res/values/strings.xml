@@ -14,6 +14,9 @@
 
     <string name="aboutText">Esta aplicacion fue desarrollada por: </string>
 
+    <!-- API Key para places y maps de google -->
+    <string name="api_key">AIzaSyDyLVoz3hu6ZxCty2FEGCu6umQYjB5mGts</string>
+
     <!-- Menu navigate view -->
     <string name="search">Buscar</string>
     <string name="restaurants">Restaurantes</string>

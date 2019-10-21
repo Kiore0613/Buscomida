@@ -38,48 +38,44 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 drawerLayout.closeDrawers();
 
+
                 switch (menuItem.getItemId()) {
 
                     case R.id.navigation_search:
                         SearchFragment search = new SearchFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, search).commit();
-                        Toast.makeText(getApplicationContext(),"Buscar", Toast.LENGTH_LONG).show();
-
+                        setTitle("Buscar");
                         break;
 
                     case R.id.navigation_restaurants:
                         RestaurantFragment restaurant = new RestaurantFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, restaurant).commit();
-                        Toast.makeText(getApplicationContext(),"Restaurantes", Toast.LENGTH_LONG).show();
-
+                        setTitle("Restaurantes");
                         break;
 
                     case R.id.navigation_near:
                         NearFragment container = new NearFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, container).commit();
                         Toast.makeText(getApplicationContext(),"Cerca de mi", Toast.LENGTH_LONG).show();
-
+                        setTitle("Cerca de mi");
                         break;
 
                     case R.id.navigation_categories:
                         CategoryFragment category = new CategoryFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, category).commit();
-                        Toast.makeText(getApplicationContext(),"Categorias", Toast.LENGTH_LONG).show();
-
+                        setTitle("Categorias");
                         break;
 
                     case R.id.navigation_preferences:
                         PreferenceFragment preference = new PreferenceFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, preference).commit();
-                        Toast.makeText(getApplicationContext(),"Preferencias", Toast.LENGTH_LONG).show();
-
+                        setTitle("Preferencias");
                         break;
 
                     case R.id.navigation_about:
                         AboutFragment about = new AboutFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, about).commit();
-                        Toast.makeText(getApplicationContext(),"About", Toast.LENGTH_LONG).show();
-
+                        setTitle("Acerca de");
                 }
                 return true;
             }
