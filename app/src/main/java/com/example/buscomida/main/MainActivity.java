@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.buscomida.R;
+import com.example.buscomida.about.AboutFragment;
 import com.example.buscomida.category.CategoryFragment;
 import com.example.buscomida.near.NearFragment;
 import com.example.buscomida.preference.PreferenceFragment;
@@ -73,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Preferencias", Toast.LENGTH_LONG).show();
 
                         break;
+
+                    case R.id.navigation_about:
+                        AboutFragment about = new AboutFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, about).commit();
+                        Toast.makeText(getApplicationContext(),"About", Toast.LENGTH_LONG).show();
 
                 }
                 return true;
