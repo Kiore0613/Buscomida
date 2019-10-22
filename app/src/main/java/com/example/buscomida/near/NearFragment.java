@@ -12,10 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.buscomida.BuscomidaApi;
 import com.example.buscomida.R;
+import com.example.buscomida.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -27,15 +33,27 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.util.Objects;
+import java.util.List;
 
 
 public class NearFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
-    GoogleMap googleMapView;
-    MapView mapView;
+    GoogleMap map;
+    SupportMapFragment mapFragment;
+
+
+    HttpLoggingInterceptor loggingInterceptor;
+    OkHttpClient.Builder httpClient;
     View view;
+
     public Marker markerPais;
     private static final int LOCATION_REQUEST_CODE = 1;
 
@@ -50,62 +68,63 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_near, container, false);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
+        retrofitData();
+        mapFragment.getMapAsync(this);
 
         return view;
     }
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        mapView = view.findViewById(R.id.map);
+    private void retrofitData(){
 
-        if (mapView != null) {
-            mapView.onCreate(null);
-            mapView.onResume();
-            mapView.getMapAsync(this);
+        loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
-        }
-    }
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://157.245.253.152:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-        MapsInitializer.initialize((getContext()));
-        googleMapView = googleMap;
 
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            googleMap.setMyLocationEnabled(true);
-            googleMap.getUiSettings().setZoomControlsEnabled(true);
-            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        BuscomidaApi buscomidaApi = retrofit.create(BuscomidaApi.class);
+        Call<List<Restaurant>> call = buscomidaApi.getRestaurantes();
 
-            //aqui pondre las coordenadas de la API
-            LatLng marcador = new LatLng(13.700950, -89.201721);
-            markerPais = googleMapView.addMarker(new MarkerOptions()
-                    .position(marcador)
-                    .title("Mi marcador")
-                    .icon((BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))));
-            CameraPosition bc = CameraPosition.builder().target(marcador).zoom(16).bearing(0).tilt(45).build();
-            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(bc));
-            googleMap.setMyLocationEnabled(true);
-        } else {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // Mostrar diálogo explicativo
-            } else {
-                // Solicitar permiso
-                ActivityCompat.requestPermissions(
-                        getActivity(),
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        LOCATION_REQUEST_CODE);
+        call.enqueue(new Callback<List<Restaurant>>() {
+            @Override
+            public void onResponse(Call<List<Restaurant>> call, Response<List<Restaurant>> response) {
+
+
+                List<Restaurant> restaurantsList = response.body();
+
+                for(Restaurant restaurant: restaurantsList){
+
+                   // LatLng position = new LatLng(13.700950, -89.201721);
+                    LatLng position = new LatLng(Double.parseDouble(restaurant.getLatRestaurante()), Double.parseDouble(restaurant.getLogRestaurante()));
+                    map.addMarker(new MarkerOptions().position(position)
+                            .flat(true)
+                    .title(restaurant.getNombreRestaurante()));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
+                    map.setMyLocationEnabled(true);
+                    Log.d("TAG","API WIIIII" + response.body());
+
+                }
+                Log.d("TAG","API WIIIII" + response.body());
             }
 
-        }
 
+            @Override
+            public void onFailure(Call<List<Restaurant>> call, Throwable t) {
+                Log.e("TAG1", "Error" + t.getMessage());
+
+            }
+        });
+
+       // mapFragment.getMapAsync(this);
 
     }
-
     @Override
     public void onLocationChanged(Location location) {
         double lattitude = location.getLatitude();
@@ -117,28 +136,36 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
         if(markerPais!=null){
             markerPais.setPosition(latLng);
         }else{
-            markerPais = googleMapView.addMarker(new MarkerOptions()
+            markerPais = map.addMarker(new MarkerOptions()
                     .position(latLng)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                     .title("I am here"));
         }
 
-    }
-
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
 
     }
 
     @Override
-    public void onProviderEnabled(String s) {
+    public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
 
     @Override
-    public void onProviderDisabled(String s) {
+    public void onProviderEnabled(String provider) {
 
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+
+        map = googleMap;
     }
 }
 
