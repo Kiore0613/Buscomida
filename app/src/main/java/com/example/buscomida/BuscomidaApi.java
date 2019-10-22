@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 
 public interface BuscomidaApi {
@@ -11,12 +12,8 @@ public interface BuscomidaApi {
     @GET("/restaurantes")
     Call <List<Restaurant>> getRestaurantes();
 
-    //@GET("restaurantes")
-    //    Call <Restaurant> getRestaurantes(@Query("name")String nombreRestaurante,
-    //                                      @Query("LatRestaurante")String latRestaurante,
-    //                                      @Query("LogRestaurante")String logRestaurante,
-    //                                      @Query("EspecialidadRestaurante")String especialidadRestaurante,
-    //                                      @Query("DireccionRestaurante")String direccionRestaurante);
+    @GET("/restaurantes/{NombreRestaurante}")
+    Call <List<Restaurant>> getRestaurantes(@Path("NombreRestaurante") String nombreRestaurante);
 
 
 }
