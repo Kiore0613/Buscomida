@@ -17,7 +17,7 @@ public class Restaurant {
     private String logRestaurante;
     @SerializedName("EspecialidadRestaurante")
     private String especialidadRestaurante;
-    @SerializedName("NombreCategoria")
+    @SerializedName("Categoria")
     private String nombreCategoria;
     @SerializedName("DireccionRestaurante")
     private String direccionRestaurante;
