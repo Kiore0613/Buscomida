@@ -108,10 +108,8 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
                     .title(restaurant.getNombreRestaurante()));
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
                     map.setMyLocationEnabled(true);
-                    Log.d("TAG","API WIIIII" + response.body());
 
                 }
-                Log.d("TAG","API WIIIII" + response.body());
             }
 
 

@@ -36,9 +36,6 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
         holder.textViewCat.setText(listRestaurant.get(position).getNombreCategoria());
         holder.textViewDirecc.setText(listRestaurant.get(position).getDireccionRestaurante());
 
-
-
-
     }
     @Override
     public int getItemCount() {
