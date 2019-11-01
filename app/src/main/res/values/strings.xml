@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Buscomida</string>
 
     <!-- header navigate -->
@@ -36,5 +36,12 @@
 
     <!-- Preferences Options -->
     <string name="darkMode">Modo oscuro</string>
+    <string name="map" tools:ignore="Typos">Mapa en Satelite</string>
+
+    <!-- Login -->
+    <string name="user">Ingrese su usuario</string>
+    <string name="pass">Ingrese su clave</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="login">Mantener login</string>
 
 </resources>

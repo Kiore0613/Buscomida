@@ -24,7 +24,6 @@ public class PreferenceFragment extends Fragment {
     View view;
     Switch switchDarkMode;
     SharedPref sharedPref;
-    private boolean isNightModeEnabled = false;
 
     private final static String TAG = "FeedActivity";
 
@@ -32,7 +31,7 @@ public class PreferenceFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
+    /*@Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         sharedPref = new SharedPref(getContext());
         if(sharedPref.loadNightModeState()==true) {
@@ -63,17 +62,42 @@ public class PreferenceFragment extends Fragment {
         });
     }
 
+     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        sharedPref = new SharedPref(getContext());
+        if (sharedPref.loadNightModeState() == true) {
+            getContext().setTheme(R.style.DarkTheme);
+        } else getContext().setTheme(R.style.AppTheme);
         view = inflater.inflate(R.layout.fragment_preference, container, false);
+        switchDarkMode = view.findViewById(R.id.switch_dark);
+        if (sharedPref.loadNightModeState() == true) {
+            switchDarkMode.setChecked(true);
+        }
+
+        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    sharedPref.setNightModeState(true);
+                    restartApp();
+
+                } else {
+                    sharedPref.setNightModeState(false);
+                    restartApp();
+
+                }
+            }
+        });
 
         return view;
 
     }
 
-    public void restartApp(){
+    public void restartApp() {
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

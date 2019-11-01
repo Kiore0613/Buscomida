@@ -6,22 +6,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.buscomida.R;
 import com.example.buscomida.about.AboutFragment;
 import com.example.buscomida.category.CategoryFragment;
 import com.example.buscomida.near.NearFragment;
-import com.example.buscomida.preference.PreferenceActivity;
 import com.example.buscomida.preference.PreferenceFragment;
+import com.example.buscomida.preference.SharedPref;
 import com.example.buscomida.restaurant.RestaurantFragment;
 import com.example.buscomida.search.SearchFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -32,8 +29,13 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
 
+    SharedPref sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = new SharedPref(this);
+        if (sharedPref.loadNightModeState() == true) {
+            setTheme(R.style.DarkTheme);
+        } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -113,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.toolbar_preferences:
                 Toast.makeText(this, "Test", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, PreferenceActivity.class);
-                startActivity(intent);
+                PreferenceFragment preference = new PreferenceFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, preference).commit();
                 setTitle("Preferencias");
                 return true;
 

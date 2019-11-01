@@ -1,4 +1,4 @@
-package com.example.buscomida;
+package com.example.buscomida.apiFiles;
 
 import android.os.Parcel;
 import android.os.Parcelable;

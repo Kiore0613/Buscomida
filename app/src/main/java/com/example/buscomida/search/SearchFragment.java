@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.buscomida.AdapterRecyclerView;
-import com.example.buscomida.BuscomidaApi;
+import com.example.buscomida.apiFiles.BuscomidaApi;
 import com.example.buscomida.R;
-import com.example.buscomida.Restaurant;
+import com.example.buscomida.apiFiles.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;

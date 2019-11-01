@@ -12,7 +12,7 @@
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
      <item name="colorPrimary">#212121</item>
      <item name="colorPrimaryDark">#000000</item>
-     <item name="colorAccent">@color/colorAccent</item>
+     <item name="colorAccent">#633255</item>
      </style>
 
     <!-- Style NavigateView -->
