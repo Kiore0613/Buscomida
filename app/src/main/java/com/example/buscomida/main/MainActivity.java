@@ -2,18 +2,25 @@ package com.example.buscomida.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.buscomida.R;
 import com.example.buscomida.about.AboutFragment;
 import com.example.buscomida.category.CategoryFragment;
 import com.example.buscomida.near.NearFragment;
+import com.example.buscomida.preference.PreferenceActivity;
 import com.example.buscomida.preference.PreferenceFragment;
 import com.example.buscomida.restaurant.RestaurantFragment;
 import com.example.buscomida.search.SearchFragment;
@@ -23,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         navigationView.setItemTextColor(ColorStateList.valueOf(ResourcesCompat.getColor(getResources(), R.color.text_white, null)));
         navigationView.setItemIconTintList(ColorStateList.valueOf(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null)));
@@ -56,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_near:
                         NearFragment container = new NearFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, container).commit();
-                        Toast.makeText(getApplicationContext(),"Cerca de mi", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Cerca de mi", Toast.LENGTH_LONG).show();
                         setTitle("Cerca de mi");
                         break;
 
@@ -80,5 +94,32 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                return true;
+            case R.id.toolbar_preferences:
+                Toast.makeText(this, "Test", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, PreferenceActivity.class);
+                startActivity(intent);
+                setTitle("Preferencias");
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

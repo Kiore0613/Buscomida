@@ -1,22 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Dark theme -->
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+     <item name="colorPrimary">#212121</item>
+     <item name="colorPrimaryDark">#000000</item>
+     <item name="colorAccent">@color/colorAccent</item>
+     </style>
+
     <!-- Style NavigateView -->
-    <style name="navigate" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="navigate" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textSize">22sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:background">@color/colorAccent</item>
     </style>
 
-    <style name="aboutText" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="aboutText" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textSize">18sp</item>
         <item name="android:padding">3dp</item>
         <item name="android:layout_margin">4dp</item>

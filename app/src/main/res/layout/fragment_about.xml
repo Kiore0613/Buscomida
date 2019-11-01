@@ -1,76 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".about.AboutFragment">
 
     <TextView
+        android:id="@+id/about"
+        style="@style/navigate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:padding="15dp"
-        style="@style/navigate"
-        android:id="@+id/about"
-        app:layout_constraintTop_toTopOf="parent"
         android:text="@string/aboutText"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_member1"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member1"
         android:layout_marginStart="5dp"
         android:text="@string/william"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@+id/about"
-        app:layout_constraintBottom_toTopOf="@+id/tv_member2"/>
+        app:layout_constraintBottom_toTopOf="@+id/tv_member2"
+        app:layout_constraintTop_toBottomOf="@+id/about" />
+
     <TextView
+        android:id="@+id/tv_member2"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member2"
         android:layout_marginStart="5dp"
         android:text="@string/ricardo"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@+id/tv_member1"
-        app:layout_constraintBottom_toTopOf="@+id/tv_member3"/>
+        app:layout_constraintBottom_toTopOf="@+id/tv_member3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_member1" />
+
     <TextView
+        android:id="@+id/tv_member3"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member3"
         android:layout_marginStart="5dp"
         android:text="@string/aaron"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member2"
-        app:layout_constraintBottom_toTopOf="@id/tv_member4"/>
+        app:layout_constraintBottom_toTopOf="@id/tv_member4"
+        app:layout_constraintTop_toBottomOf="@id/tv_member2" />
+
     <TextView
+        android:id="@+id/tv_member4"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member4"
         android:layout_marginStart="5dp"
         android:text="@string/emerson"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member3"
-        app:layout_constraintBottom_toTopOf="@id/tv_member5"/>
+        app:layout_constraintBottom_toTopOf="@id/tv_member5"
+        app:layout_constraintTop_toBottomOf="@id/tv_member3" />
+
     <TextView
+        android:id="@+id/tv_member5"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member5"
         android:layout_marginStart="5dp"
         android:text="@string/manuel"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member4"
-        app:layout_constraintBottom_toTopOf="@id/tv_member6"/>
+        app:layout_constraintBottom_toTopOf="@id/tv_member6"
+        app:layout_constraintTop_toBottomOf="@id/tv_member4" />
+
     <TextView
+        android:id="@+id/tv_member6"
+        style="@style/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_member6"
         android:layout_marginStart="5dp"
         android:text="@string/jesus"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member5"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_member5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

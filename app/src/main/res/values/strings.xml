@@ -31,5 +31,10 @@
     <string name="direccion">Direccion: </string>
     <string name="categoria">Categoria: </string>
 
+    <!-- Toolbar Menu -->
+    <string name="toolbarPreference">Preferencias</string>
+
+    <!-- Preferences Options -->
+    <string name="darkMode">Modo oscuro</string>
 
 </resources>
