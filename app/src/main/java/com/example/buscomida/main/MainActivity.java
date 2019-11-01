@@ -97,15 +97,10 @@ public class MainActivity extends BaseAppCompat {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.toolbar_preferences:
-                Toast.makeText(this, "Test", Toast.LENGTH_LONG).show();
-                //PreferenceFragment preference = new PreferenceFragment();
-                //getSupportFragmentManager().beginTransaction().add(R.id.container_layout, preference).commit();
-                Intent intent = new Intent(this, PreferenceActivity.class);
-                startActivity(intent);
-                return true;
-
+        if (item.getItemId() == R.id.toolbar_preferences) {
+            Intent intent = new Intent(this, PreferenceActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
 
