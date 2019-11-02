@@ -18,11 +18,8 @@ import com.example.buscomida.main.MainActivity;
 
 public class PreferenceFragment extends Fragment {
 
-    View view;
-    Switch switchDarkMode;
-    SharedPref sharedPref;
+    private SharedPref sharedPref;
 
-    private final static String TAG = "FeedActivity";
 
     public PreferenceFragment() {
         // Required empty public constructor
@@ -33,13 +30,61 @@ public class PreferenceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-       sharedPref = new SharedPref(getContext());
-        if (sharedPref.loadNightModeState() == true) {
+        sharedPref = new SharedPref(getContext());
+
+        //dark mode
+        if (sharedPref.loadNightModeState()) {
             getContext().setTheme(R.style.DarkTheme);
         } else getContext().setTheme(R.style.AppTheme);
-        view = inflater.inflate(R.layout.fragment_preference, container, false);
-        switchDarkMode = view.findViewById(R.id.switch_dark);
-        if (sharedPref.loadNightModeState() == true) {
+
+        View view = inflater.inflate(R.layout.fragment_preference, container, false);
+
+        Switch switchDarkMode = view.findViewById(R.id.switch_dark);
+        Switch switchMap = view.findViewById(R.id.switch_map);
+        Switch swichLite = view.findViewById(R.id.switch_lite);
+
+        //switch Map
+        if (sharedPref.getMap()) {
+            switchMap.setChecked(true);
+            swichLite.setChecked(false);
+        }
+
+        switchMap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+                if (isChecked) {
+                    sharedPref.setMap(true);
+                    restartApp();
+                } else {
+                    sharedPref.setMap(false);
+                    restartApp();
+                }
+            }
+        });
+
+        //switch Lite Map
+
+        if (sharedPref.getLiteMap()) {
+            switchMap.setChecked(false);
+            swichLite.setChecked(true);
+        }
+
+        swichLite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    sharedPref.setLiteMap(true);
+                    restartApp();
+                } else {
+                    sharedPref.setLiteMap(false);
+                    restartApp();
+                }
+            }
+        });
+
+        //switch Dark Mode
+        if (sharedPref.loadNightModeState()) {
             switchDarkMode.setChecked(true);
         }
 
@@ -53,17 +98,17 @@ public class PreferenceFragment extends Fragment {
                 } else {
                     sharedPref.setNightModeState(false);
                     restartApp();
-
                 }
             }
         });
+
 
         return view;
 
     }
 
 
-    public void restartApp() {
+    private void restartApp() {
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

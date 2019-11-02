@@ -18,8 +18,8 @@
         android:title="@string/categories"/>
 
     <item
-        android:id="@+id/navigation_preferences"
-        android:title="@string/preferences"/>
+        android:id="@+id/navigation_exit"
+        android:title="@string/exit"/>
 
     <item
         android:id="@+id/navigation_about"

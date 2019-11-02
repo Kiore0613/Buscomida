@@ -5,14 +5,20 @@
     <string name="header">Buscomida</string>
 
     <!-- Integrantes -->
-    <string name="william">William Ernesto Castillo Diaz 17–4068–2015</string>
-    <string name="ricardo">Ricardo Ernesto Chicas Murcia 25–0723–2014</string>
-    <string name="aaron">Aaron Alejando Reynoza Valdez 25–0712–2015</string>
-    <string name="emerson">Emerson Mauricio Rivera Avalos 17–5074–2011</string>
-    <string name="manuel">Manuel Alexander Vasquez Rafaelano 25–0081–2015</string>
-    <string name="jesus">Jesus Ernesto Zelaya Garcia 25–3033–2015</string>
+    <string name="william">William Ernesto Castillo Diaz</string>
+    <string name="williamId">17–4068–2015</string>
+    <string name="ricardo">Ricardo Ernesto Chicas Murcia</string>
+    <string name="ricardoId">25–0723–2014</string>
+    <string name="aaron">Aaron Alejando Reynoza Valdez</string>
+    <string name="aaronId">25–0712–2015</string>
+    <string name="emerson">Emerson Mauricio Rivera Avalos</string>
+    <string name="emersonId">17–5074–2011</string>
+    <string name="manuel">Manuel Alexander Vasquez Rafaelano</string>
+    <string name="manueId">25–0081–2015</string>
+    <string name="jesus">Jesus Ernesto Zelaya Garcia</string>
+    <string name="jesusId">25–3033–2015</string>
 
-    <string name="aboutText">Esta aplicacion fue desarrollada por: </string>
+    <string name="aboutText">Está aplicación fue desarrollada por: </string>
 
     <!-- API Key para places y maps de google -->
     <string name="api_key">AIzaSyDyLVoz3hu6ZxCty2FEGCu6umQYjB5mGts</string>
@@ -22,7 +28,7 @@
     <string name="restaurants">Restaurantes</string>
     <string name="near">Cerca de mi</string>
     <string name="categories">Categorias</string>
-    <string name="preferences">Preferencias</string>
+    <string name="exit">Cerrar sesión</string>
     <string name="about">Acerca de</string>
 
     <!-- Item recyclerView -->
@@ -36,7 +42,8 @@
 
     <!-- Preferences Options -->
     <string name="darkMode">Modo oscuro</string>
-    <string name="map" tools:ignore="Typos">Mapa en Satelite</string>
+    <string name="map">Mapa en satélite</string>
+    <string name="lite">Mapa en Ahorro de datos</string>
 
     <!-- Login -->
     <string name="user">Ingrese su usuario</string>

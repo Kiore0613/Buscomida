@@ -6,14 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="colorWhite">@color/colorWhite</item>
     </style>
 
     <!-- Dark theme -->
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
-     <item name="colorPrimary">#212121</item>
-     <item name="colorPrimaryDark">#000000</item>
-     <item name="colorAccent">#633255</item>
-     </style>
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#633255</item>
+        <item name="textColor">#ffff</item>
+    </style>
 
     <!-- Style NavigateView -->
     <style name="navigate" parent="Theme.AppCompat.Light.NoActionBar">
@@ -24,9 +27,9 @@
     </style>
 
     <style name="aboutText" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textSize">18sp</item>
-        <item name="android:padding">3dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">2dp</item>
 
     </style>
 

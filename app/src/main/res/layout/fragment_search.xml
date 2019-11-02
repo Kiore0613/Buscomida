@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".search.SearchFragment">
 
     <androidx.cardview.widget.CardView
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/button_rounded"
         android:alpha="1"
         android:visibility="visible"
         app:cardCornerRadius="10dp"
@@ -42,7 +44,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_restaurant"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_height="516dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idCardView"
