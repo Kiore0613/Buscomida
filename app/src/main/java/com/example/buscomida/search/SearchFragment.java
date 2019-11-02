@@ -62,7 +62,7 @@ public class SearchFragment extends Fragment {
                 httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.2:5000/")
+                        .baseUrl("http://192.168.1.4:5000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .client(httpClient.build())
                         .build();

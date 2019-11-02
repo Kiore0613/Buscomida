@@ -46,7 +46,6 @@ public class PreferenceFragment extends Fragment {
         //switch Map
         if (sharedPref.getMap()) {
             switchMap.setChecked(true);
-            swichLite.setChecked(false);
         }
 
         switchMap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -66,7 +65,6 @@ public class PreferenceFragment extends Fragment {
         //switch Lite Map
 
         if (sharedPref.getLiteMap()) {
-            switchMap.setChecked(false);
             swichLite.setChecked(true);
         }
 

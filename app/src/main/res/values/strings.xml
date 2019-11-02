@@ -43,7 +43,7 @@
     <!-- Preferences Options -->
     <string name="darkMode">Modo oscuro</string>
     <string name="map">Mapa en satélite</string>
-    <string name="lite">Mapa en Ahorro de datos</string>
+    <string name="lite">Deshabilitar ubicación</string>
 
     <!-- Login -->
     <string name="user">Ingrese su usuario</string>

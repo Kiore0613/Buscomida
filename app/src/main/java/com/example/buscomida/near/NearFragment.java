@@ -70,7 +70,7 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:5000/")
+                .baseUrl("http://192.168.1.4:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -97,19 +97,18 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
 
                     //map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     if (sharedPref.getLiteMap()) {
-                        GoogleMapOptions options = new GoogleMapOptions();
+                        map.setMyLocationEnabled(false);
+                        map.clear();
+                    }
 
-                        //map.setMapType(options.liteMode(true));
-                        map.setMapType(options.getMapType());
+
+                    if (sharedPref.getMap()) {
+                        map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
                     } else {
+                        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
 
-                        if (sharedPref.getMap()) {
-                            map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                        } else {
-                            map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-                        }
                     }
                 }
             }
