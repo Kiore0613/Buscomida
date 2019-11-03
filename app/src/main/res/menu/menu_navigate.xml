@@ -2,26 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_search"
-        android:title="@string/search"/>
-
-    <item
-        android:id="@+id/navigation_restaurants"
-        android:title="@string/restaurants"
-        />
+        android:title="@string/search" />
 
     <item
         android:id="@+id/navigation_near"
-        android:title="@string/near"/>
+        android:title="@string/near" />
 
     <item
         android:id="@+id/navigation_categories"
-        android:title="@string/categories"/>
+        android:title="@string/categories" />
 
     <item
         android:id="@+id/navigation_exit"
-        android:title="@string/exit"/>
+        android:title="@string/exit" />
 
     <item
         android:id="@+id/navigation_about"
-        android:title="@string/about"/>
+        android:title="@string/about" />
 </menu>

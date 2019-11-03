@@ -23,6 +23,9 @@
     <!-- API Key para places y maps de google -->
     <string name="api_key">AIzaSyDyLVoz3hu6ZxCty2FEGCu6umQYjB5mGts</string>
 
+    <!-- URL API -->
+    <string name="url">http://192.168.1.4:5000/</string>
+
     <!-- Menu navigate view -->
     <string name="search">Buscar</string>
     <string name="restaurants">Restaurantes</string>

@@ -4,29 +4,28 @@ package com.example.buscomida.near;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
-
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.example.buscomida.R;
 import com.example.buscomida.SharedPref;
 import com.example.buscomida.apiFiles.BuscomidaApi;
-import com.example.buscomida.R;
 import com.example.buscomida.apiFiles.Restaurant;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -35,9 +34,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import java.util.List;
-
 
 public class NearFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
@@ -49,10 +45,10 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         sharedPref = new SharedPref(getContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_near, container, false);
@@ -70,7 +66,7 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.4:5000/")
+                .baseUrl(getResources().getString(R.string.url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -92,10 +88,9 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
                     map.addMarker(new MarkerOptions().position(position)
                             .flat(true)
                             .title(restaurant.getNombreRestaurante()));
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 12));
                     map.setMyLocationEnabled(true);
 
-                    //map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     if (sharedPref.getLiteMap()) {
                         map.setMyLocationEnabled(false);
                         map.clear();
@@ -121,8 +116,6 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
             }
         });
 
-        // mapFragment.getMapAsync(this);
-
     }
 
     @Override
@@ -141,7 +134,6 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                     .title("I am here"));
         }
-
 
     }
 
@@ -163,7 +155,6 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
 
         map = googleMap;
     }

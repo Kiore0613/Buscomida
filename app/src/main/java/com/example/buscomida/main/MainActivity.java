@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.buscomida.BaseAppCompat;
 import com.example.buscomida.R;
 import com.example.buscomida.SharedPref;
@@ -17,7 +19,6 @@ import com.example.buscomida.about.AboutFragment;
 import com.example.buscomida.category.CategoryFragment;
 import com.example.buscomida.near.NearFragment;
 import com.example.buscomida.preference.PreferenceActivity;
-import com.example.buscomida.restaurant.RestaurantFragment;
 import com.example.buscomida.search.SearchFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,12 +56,6 @@ public class MainActivity extends BaseAppCompat {
                         SearchFragment search = new SearchFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, search).commit();
                         setTitle(getResources().getString(R.string.search));
-                        break;
-
-                    case R.id.navigation_restaurants:
-                        RestaurantFragment restaurant = new RestaurantFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, restaurant).commit();
-                        setTitle(getResources().getString(R.string.restaurants));
                         break;
 
                     case R.id.navigation_near:

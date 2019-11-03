@@ -13,8 +13,12 @@ import com.example.buscomida.apiFiles.Restaurant;
 
 import java.util.ArrayList;
 
-public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerView.ViewHolderRestaurant> {
-    ArrayList<Restaurant> listRestaurant;
+public class AdapterRecyclerView
+        extends RecyclerView.Adapter<AdapterRecyclerView.ViewHolderRestaurant>
+        implements View.OnClickListener {
+
+    private ArrayList<Restaurant> listRestaurant;
+    private View.OnClickListener listener;
 
 
     public AdapterRecyclerView(ArrayList<Restaurant> listRestaurant) {
@@ -29,6 +33,8 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_view_search, parent, false);
 
+        view.setOnClickListener(this);
+
         return new ViewHolderRestaurant(view);
     }
 
@@ -40,10 +46,23 @@ public class AdapterRecyclerView extends RecyclerView.Adapter<AdapterRecyclerVie
         holder.textViewDirecc.setText(listRestaurant.get(position).getDireccionRestaurante());
 
     }
+
     @Override
     public int getItemCount() {
         return listRestaurant.size();
 
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(listener != null){
+            listener.onClick(view);
+        }
     }
 
     public class ViewHolderRestaurant extends RecyclerView.ViewHolder {

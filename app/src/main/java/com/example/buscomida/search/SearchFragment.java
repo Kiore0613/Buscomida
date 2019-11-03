@@ -1,10 +1,12 @@
 package com.example.buscomida.search;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.buscomida.apiFiles.BuscomidaApi;
 import com.example.buscomida.R;
 import com.example.buscomida.apiFiles.Restaurant;
+import com.example.buscomida.restaurant.RestaurantActivity;
+import com.example.buscomida.restaurant.RestaurantFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +33,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SearchFragment extends Fragment {
 
-    View view;
-    HttpLoggingInterceptor loggingInterceptor;
-    OkHttpClient.Builder httpClient;
-    RecyclerView recyclerViewRestaurant;
-    SearchView searchViewRestaurant;
+    private final static String OBJ = "obj";
+
+    private HttpLoggingInterceptor loggingInterceptor;
+    private OkHttpClient.Builder httpClient;
+    private RecyclerView recyclerViewRestaurant;
+    private SearchView searchViewRestaurant;
+
     public SearchFragment() {
 
     }
@@ -43,7 +49,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
         searchViewRestaurant = view.findViewById(R.id.search_restaurant);
         recyclerViewRestaurant = view.findViewById(R.id.rv_restaurant);
 
@@ -52,7 +58,7 @@ public class SearchFragment extends Fragment {
     }
 
 
-    public void retrofitData(){
+    public void retrofitData() {
 
         searchViewRestaurant.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -62,7 +68,7 @@ public class SearchFragment extends Fragment {
                 httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.4:5000/")
+                        .baseUrl(getResources().getString(R.string.url))
                         .addConverterFactory(GsonConverterFactory.create())
                         .client(httpClient.build())
                         .build();
@@ -72,12 +78,23 @@ public class SearchFragment extends Fragment {
                 call.enqueue(new Callback<List<Restaurant>>() {
                     @Override
                     public void onResponse(Call<List<Restaurant>> call, Response<List<Restaurant>> response) {
-                        List<Restaurant> restaurantsList = response.body();
+                        final List<Restaurant> restaurantsList = response.body();
                         recyclerViewRestaurant.setLayoutManager(new LinearLayoutManager(getContext()));
                         AdapterRecyclerView adapterRecyclerView = new AdapterRecyclerView(new ArrayList<>(restaurantsList));
                         recyclerViewRestaurant.setAdapter(adapterRecyclerView);
                         recyclerViewRestaurant.addItemDecoration(
-                                new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+                                new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
+                        adapterRecyclerView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                Intent it = new Intent(getContext(), RestaurantActivity.class);
+                                it.putExtra(OBJ, restaurantsList.get(recyclerViewRestaurant.getChildAdapterPosition(view)));
+
+                                startActivity(it);
+                            }
+                        });
                     }
 
                     @Override

@@ -1,10 +1,9 @@
 package com.example.buscomida.preference;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.buscomida.BaseAppCompat;
 import com.example.buscomida.R;
@@ -17,7 +16,7 @@ public class PreferenceActivity extends BaseAppCompat {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
-        setTitle("Preferencias");
+        setTitle(getResources().getString(R.string.toolbarPreference));
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
