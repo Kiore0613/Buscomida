@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class Restaurant  implements Parcelable{
+public class Restaurant implements Parcelable {
 
     @SerializedName("NombreRestaurante")
     private String nombreRestaurante;
@@ -22,13 +22,37 @@ public class Restaurant  implements Parcelable{
     @SerializedName("DireccionRestaurante")
     private String direccionRestaurante;
 
-    public Restaurant(String nombreRestaurante, String latRestaurante, String logRestaurante, String especialidadRestaurante, String nombreCategoria, String direccionRestaurante) {
+    //Endpoint Category
+    @SerializedName("IdCateria")
+    private String idCategoria;
+    @SerializedName("NombreCateria")
+    private String categoriaNombre;
+
+    public String getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getCategoriaNombre() {
+        return categoriaNombre;
+    }
+
+    public void setCategoriaNombre(String categoriaNombre) {
+        this.categoriaNombre = categoriaNombre;
+    }
+
+    public Restaurant(String nombreRestaurante, String latRestaurante, String logRestaurante, String especialidadRestaurante, String nombreCategoria, String direccionRestaurante, String idCategoria, String categoriaNombre) {
         this.nombreRestaurante = nombreRestaurante;
         this.latRestaurante = latRestaurante;
         this.logRestaurante = logRestaurante;
         this.especialidadRestaurante = especialidadRestaurante;
         this.nombreCategoria = nombreCategoria;
         this.direccionRestaurante = direccionRestaurante;
+        this.idCategoria = idCategoria;
+        this.categoriaNombre = categoriaNombre;
     }
 
     protected Restaurant(Parcel in) {
@@ -38,6 +62,8 @@ public class Restaurant  implements Parcelable{
         especialidadRestaurante = in.readString();
         nombreCategoria = in.readString();
         direccionRestaurante = in.readString();
+        idCategoria = in.readString();
+        categoriaNombre = in.readString();
     }
 
     public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
@@ -113,6 +139,8 @@ public class Restaurant  implements Parcelable{
         parcel.writeString(especialidadRestaurante);
         parcel.writeString(nombreCategoria);
         parcel.writeString(direccionRestaurante);
+        parcel.writeString(idCategoria);
+        parcel.writeString(nombreCategoria);
     }
 }
 

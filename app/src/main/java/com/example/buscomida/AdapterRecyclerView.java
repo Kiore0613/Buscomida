@@ -1,4 +1,4 @@
-package com.example.buscomida.search;
+package com.example.buscomida;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.buscomida.R;
 import com.example.buscomida.apiFiles.Restaurant;
 
 import java.util.ArrayList;

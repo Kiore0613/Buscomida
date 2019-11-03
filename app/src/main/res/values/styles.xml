@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textColor">@color/textColor</item>
         <item name="colorWhite">@color/colorWhite</item>
+        <item name="colorInvertido">@color/colorInvertido</item>
     </style>
 
     <!-- Dark theme -->
@@ -16,6 +17,7 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#633255</item>
         <item name="textColor">#ffff</item>
+        <item name="colorInvertido">#00acc1</item>
     </style>
 
     <!-- Style NavigateView -->

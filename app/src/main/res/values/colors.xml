@@ -5,4 +5,5 @@
     <color name="colorAccent">#4f83cc</color>
     <color name="textColor">#000000</color>
     <color name="colorWhite">#ffff</color>
+    <color name="colorInvertido">#212121</color>
 </resources>

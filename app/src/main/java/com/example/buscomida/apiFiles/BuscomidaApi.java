@@ -15,5 +15,9 @@ public interface BuscomidaApi {
     @GET("/restaurantes/{NombreRestaurante}")
     Call <List<Restaurant>> getRestaurantes(@Path("NombreRestaurante") String nombreRestaurante);
 
+    @GET("/categorias")
+    Call <List<Restaurant>> getCategorias();
 
+    @GET("/restaurantes/categoria/{IdCateria}")
+    Call <List<Restaurant>> getCategoriaId();
 }

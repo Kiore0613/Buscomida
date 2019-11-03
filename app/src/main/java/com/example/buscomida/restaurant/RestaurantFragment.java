@@ -35,8 +35,6 @@ public class RestaurantFragment extends Fragment implements OnMapReadyCallback {
 
     private final static String OBJ = "obj";
 
-    private GoogleMap map;
-
     public RestaurantFragment() {
     }
 
@@ -50,7 +48,6 @@ public class RestaurantFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_restaurant);
 
         mapFragment.getMapAsync(this);
-
 
         textViewNameRestaurant = view.findViewById(R.id.tv_name_restaurant);
         textViewEspecRestaurant = view.findViewById(R.id.tv_espec_restaurant);
@@ -69,7 +66,6 @@ public class RestaurantFragment extends Fragment implements OnMapReadyCallback {
         String direcRestaurant = restaurant.getDireccionRestaurante();
         String catRestaurant = restaurant.getNombreCategoria();
 
-
         textViewNameRestaurant.setText(nameRestaurant);
         textViewEspecRestaurant.setText(especRestaurant);
         textViewCatRestaurant.setText(catRestaurant);
@@ -78,19 +74,18 @@ public class RestaurantFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
 
         LatLng position = new LatLng(Double.parseDouble(restaurant.getLatRestaurante()), Double.parseDouble(restaurant.getLogRestaurante()));
-        map.addMarker(new MarkerOptions().position(position)
+        googleMap.addMarker(new MarkerOptions().position(position)
                 .flat(true)
                 .title(restaurant.getNombreRestaurante()));
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
 
         if (sharedPref.getMap()) {
-            map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
         } else {
-            map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
 
         }

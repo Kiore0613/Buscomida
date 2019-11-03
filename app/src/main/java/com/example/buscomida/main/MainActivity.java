@@ -85,6 +85,15 @@ public class MainActivity extends BaseAppCompat {
                 return true;
             }
         });
+
+        CategoryFragment category = new CategoryFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, category).commit();
+        setTitle(getResources().getString(R.string.categories));
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     @Override
