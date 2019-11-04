@@ -2,10 +2,12 @@ package com.example.buscomida.login;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import com.example.buscomida.R;
 import com.example.buscomida.main.MainActivity;
 import com.example.buscomida.SharedPref;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     String user, password;
     SharedPref sharedPref;
     CheckBox checkBoxLogin;
+
+    ConstraintLayout constraintLayout;
 
     Boolean shouldKeepLogin = false;
 
@@ -35,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         editTextUser = findViewById(R.id.edt_user);
         editTextPassword = findViewById(R.id.edt_password);
         checkBoxLogin = findViewById(R.id.checkbox_login);
+
+        constraintLayout = findViewById(R.id.login_layout);
 
         checkBoxLogin.setChecked(sharedPref.getKeepMeLoggedIn());
         if(sharedPref.getKeepMeLoggedIn()){
@@ -58,12 +65,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (TextUtils.isEmpty(user)) {
-            editTextUser.setError("Campo no puede estar vacío");
+            requiredField();
             editTextUser.requestFocus();
 
 
         } else if (TextUtils.isEmpty(password)) {
-            editTextPassword.setError("Campo no puede estar vacío");
+            requiredField();
             editTextPassword.requestFocus();
         } else {
 
@@ -80,20 +87,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void showDialog() {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
-        alerta
-                .setTitle("Alerta")
-                .setMessage("El usuario/clave es incorrecto")
-                .setCancelable(true)
-                .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
 
-        AlertDialog mostrar = alerta.create();
-        mostrar.show();
+        Snackbar snackbar = Snackbar
+                .make(constraintLayout, getResources().getString(R.string.snack), Snackbar.LENGTH_LONG);
+        snackbar.show();
+
+    }
+
+    public void requiredField(){
+        Snackbar snackbar = Snackbar
+                .make(constraintLayout, getResources().getString(R.string.field), Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
 }

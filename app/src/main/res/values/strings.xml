@@ -54,5 +54,10 @@
     <string name="ingresar">Ingresar</string>
     <string name="login">Mantener login</string>
 
+    <!-- SnackBar -->
+    <string name="snack">El usuario o la clave es incorrecta</string>
+    <string name="field">Campo obligatorio</string>
+    <string name="location">La ubicación ha sido desactivada</string>
+
 
 </resources>

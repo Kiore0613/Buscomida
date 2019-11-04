@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -41,6 +43,8 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
     private Marker markerPais;
     private SharedPref sharedPref;
 
+    RelativeLayout relativeLayout;
+
     public NearFragment() {
 
     }
@@ -52,6 +56,8 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
         sharedPref = new SharedPref(getContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_near, container, false);
+
+        relativeLayout = view.findViewById(R.id.near_layout);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
         retrofitData();
@@ -92,6 +98,9 @@ public class NearFragment extends Fragment implements OnMapReadyCallback, Locati
                     map.setMyLocationEnabled(true);
 
                     if (sharedPref.getLiteMap()) {
+                        Snackbar snackbar = Snackbar
+                                .make(relativeLayout, getResources().getString(R.string.location), Snackbar.LENGTH_LONG);
+                        snackbar.show();
                         map.setMyLocationEnabled(false);
                         map.clear();
                     }
