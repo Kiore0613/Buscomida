@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.buscomida.R;
 import com.example.buscomida.apiFiles.BuscomidaApi;
+import com.example.buscomida.apiFiles.Category;
 import com.example.buscomida.apiFiles.Restaurant;
 import com.google.android.material.tabs.TabLayout;
 
@@ -59,19 +60,23 @@ public class CategoryFragment extends Fragment {
 
 
         BuscomidaApi buscomidaApi = retrofit.create(BuscomidaApi.class);
-        Call<List<Restaurant>> call = buscomidaApi.getCategorias();
+        Call<List<Category>> call = buscomidaApi.getCategorias();
 
-        call.enqueue(new Callback<List<Restaurant>>() {
+        call.enqueue(new Callback<List<Category>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Restaurant>> call, @NonNull Response<List<Restaurant>> response) {
+            public void onResponse(@NonNull Call<List<Category>> call, @NonNull Response<List<Category>> response) {
 
 
-                List<Restaurant> categoryList = response.body();
+                List<Category> categoryList = response.body();
 
-                for (Restaurant restaurant : categoryList) {
+                for (Category category : categoryList) {
 
-                    viewPagerAdapter.addFragment(new CatRecyclerFragment(), restaurant.getCategoriaNombre());
-                    Toast.makeText(getContext(), restaurant.getNombreCategoria(), Toast.LENGTH_LONG).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(OBJ, category.getCategoriaNombre());
+
+                    CatRecyclerFragment catRecyclerFragment = new CatRecyclerFragment();
+                    catRecyclerFragment.setArguments(bundle);
+                    viewPagerAdapter.addFragment(catRecyclerFragment, category.getCategoriaNombre());
                     viewPager.setAdapter(viewPagerAdapter);
                     tabLayout.setupWithViewPager(viewPager);
                 }
@@ -79,7 +84,7 @@ public class CategoryFragment extends Fragment {
 
 
             @Override
-            public void onFailure(@NonNull Call<List<Restaurant>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Category>> call, @NonNull Throwable t) {
                 Log.e("TAG1", "Error" + t.getMessage());
 
             }
@@ -87,6 +92,8 @@ public class CategoryFragment extends Fragment {
 
         return view;
     }
+
+
 
 
 }

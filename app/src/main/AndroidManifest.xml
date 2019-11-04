@@ -27,16 +27,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".restaurant.RestaurantActivity"></activity>
+        <activity android:name=".restaurant.RestaurantActivity" />
         <activity android:name=".preference.PreferenceActivity" />
         <activity android:name=".login.LoginActivity">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity" />
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
