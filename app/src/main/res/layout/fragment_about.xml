@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
-    tools:context=".about.AboutFragment">
+    android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/idCardView1"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="5dp"
-        android:alpha="1"
-        android:visibility="visible"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="?attr/colorPrimary"
+        tools:context=".about.AboutFragment">
 
-        <TextView
-            android:id="@+id/about"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idCardView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:padding="15dp"
-            android:text="@string/aboutText"
-            android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:alpha="1"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/idCardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="5dp"
-        android:alpha="1"
-        android:visibility="visible"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/idCardView1">
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:padding="15dp"
+                android:text="@string/aboutText"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_about"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idCardView2"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:background="@drawable/button_rounded"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:alpha="1"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/idCardView1">
 
-            android:layout_margin="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.448"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about"
-            app:layout_constraintVertical_bias="0.094" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_about"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_margin="15dp"
 
-    </androidx.cardview.widget.CardView>
+                android:background="@drawable/button_rounded"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about"
+                app:layout_constraintVertical_bias="0.094" />
+
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

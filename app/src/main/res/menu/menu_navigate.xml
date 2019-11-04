@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_categories"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
     <item
         android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_search"
         android:title="@string/search" />
 
     <item
         android:id="@+id/navigation_near"
+        android:icon="@drawable/ic_near"
         android:title="@string/near" />
 
-    <item
-        android:id="@+id/navigation_categories"
-        android:title="@string/categories" />
-
-    <item
-        android:id="@+id/navigation_exit"
-        android:title="@string/exit" />
 
     <item
         android:id="@+id/navigation_about"
+        android:icon="@drawable/ic_about"
         android:title="@string/about" />
 </menu>

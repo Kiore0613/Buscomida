@@ -6,4 +6,9 @@
         android:icon="@drawable/preferences"
         android:title="@string/toolbarPreference"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/toolbar_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/exit"
+        app:showAsAction="always"/>
 </menu>
