@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.buscomida.AdapterRecyclerView;
-import com.example.buscomida.apiFiles.BuscomidaApi;
 import com.example.buscomida.R;
+import com.example.buscomida.apiFiles.BuscomidaApi;
 import com.example.buscomida.apiFiles.Restaurant;
 import com.example.buscomida.restaurant.RestaurantActivity;
 
@@ -57,7 +57,7 @@ public class SearchFragment extends Fragment {
     }
 
 
-    public void retrofitData() {
+    private void retrofitData() {
 
         searchViewRestaurant.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -94,6 +94,7 @@ public class SearchFragment extends Fragment {
                                 startActivity(it);
                             }
                         });
+
                     }
 
                     @Override
