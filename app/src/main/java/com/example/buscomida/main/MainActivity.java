@@ -13,6 +13,7 @@ import com.example.buscomida.R;
 import com.example.buscomida.SharedPref;
 import com.example.buscomida.about.AboutFragment;
 import com.example.buscomida.category.CategoryFragment;
+import com.example.buscomida.login.LoginActivity;
 import com.example.buscomida.near.NearFragment;
 import com.example.buscomida.preference.PreferenceActivity;
 import com.example.buscomida.search.SearchFragment;
@@ -105,7 +106,9 @@ public class MainActivity extends BaseAppCompat {
 
             case R.id.toolbar_exit:
                 sharedPref.setKeepMeLoggedIn(false);
-                finish();
+                Intent exit = new Intent(this, LoginActivity.class);
+                exit.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(exit);
                 break;
 
         }
