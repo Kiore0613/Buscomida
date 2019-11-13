@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.buscomida.AdapterRecyclerView;
 import com.example.buscomida.R;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editTextUser, editTextPassword;
     SharedPref sharedPref;
     CheckBox checkBoxLogin;
+    ProgressBar progressBarLogin;
 
     private HttpLoggingInterceptor loggingInterceptor;
     private OkHttpClient.Builder httpClient;
@@ -61,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextUser = findViewById(R.id.edt_user);
         editTextPassword = findViewById(R.id.edt_password);
         checkBoxLogin = findViewById(R.id.checkbox_login);
-
+        progressBarLogin = findViewById(R.id.progress_bar);
         constraintLayout = findViewById(R.id.login_layout);
 
         checkBoxLogin.setChecked(sharedPref.getKeepMeLoggedIn());
@@ -103,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void retrofitData(String user, String password) {
 
-
+                progressBarLogin.setVisibility(View.VISIBLE);
                 loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
                 httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
@@ -125,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }else{
                             showDialog();
+                            progressBarLogin.setVisibility(View.INVISIBLE);
                         }
                     }
 
