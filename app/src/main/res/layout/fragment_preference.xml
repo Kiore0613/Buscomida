@@ -1,60 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".preference.PreferenceFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="227dp"
-            android:layout_height="72dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="40dp"
-            android:text="Selecciona tus Categorias Favoritas"
-            android:textSize="24sp" />
+    <TextView
+        android:id="@+id/tv_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/darkMode"
+        android:textColor="?attr/textColor"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toStartOf="@+id/switch_dark"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+    <Switch
+        android:id="@+id/switch_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                android:id="@+id/idComidaTipica"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Comida Tipica" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/map"
+        android:textColor="?attr/textColor"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/switch_map"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dark" />
 
-            <RadioButton
-                android:id="@+id/idComidaRapida"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Comida Rapida" />
+    <Switch
+        android:id="@+id/switch_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_dark" />
 
-            <RadioButton
-                android:id="@+id/idRestaurante"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Restaurante" />
+    <TextView
+        android:id="@+id/tv_mapa_lite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/lite"
+        android:textColor="?attr/textColor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/switch_lite"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <RadioButton
-                android:id="@+id/idTortas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tortas" />
-        </RadioGroup>
+    <Switch
+        android:id="@+id/switch_lite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_map" />
 
-        <Button
-            android:id="@+id/btnEnviar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="Enviar" />
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

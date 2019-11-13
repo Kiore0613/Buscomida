@@ -1,4 +1,4 @@
-package com.example.buscomida;
+package com.example.buscomida.apiFiles;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class Restaurant {
+public class Restaurant implements Parcelable {
 
     @SerializedName("NombreRestaurante")
     private String nombreRestaurante;
@@ -22,6 +22,8 @@ public class Restaurant {
     @SerializedName("DireccionRestaurante")
     private String direccionRestaurante;
 
+
+
     public Restaurant(String nombreRestaurante, String latRestaurante, String logRestaurante, String especialidadRestaurante, String nombreCategoria, String direccionRestaurante) {
         this.nombreRestaurante = nombreRestaurante;
         this.latRestaurante = latRestaurante;
@@ -30,6 +32,27 @@ public class Restaurant {
         this.nombreCategoria = nombreCategoria;
         this.direccionRestaurante = direccionRestaurante;
     }
+
+    protected Restaurant(Parcel in) {
+        nombreRestaurante = in.readString();
+        latRestaurante = in.readString();
+        logRestaurante = in.readString();
+        especialidadRestaurante = in.readString();
+        nombreCategoria = in.readString();
+        direccionRestaurante = in.readString();
+    }
+
+    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
+        @Override
+        public Restaurant createFromParcel(Parcel in) {
+            return new Restaurant(in);
+        }
+
+        @Override
+        public Restaurant[] newArray(int size) {
+            return new Restaurant[size];
+        }
+    };
 
     public String getNombreRestaurante() {
         return nombreRestaurante;
@@ -79,5 +102,19 @@ public class Restaurant {
         this.direccionRestaurante = direccionRestaurante;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nombreRestaurante);
+        parcel.writeString(latRestaurante);
+        parcel.writeString(logRestaurante);
+        parcel.writeString(especialidadRestaurante);
+        parcel.writeString(nombreCategoria);
+        parcel.writeString(direccionRestaurante);
+    }
 }
 

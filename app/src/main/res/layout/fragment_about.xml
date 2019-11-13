@@ -1,76 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".about.AboutFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        style="@style/navigate"
-        android:id="@+id/about"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/aboutText"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member1"
-        android:layout_marginStart="5dp"
-        android:text="@string/william"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@+id/about"
-        app:layout_constraintBottom_toTopOf="@+id/tv_member2"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member2"
-        android:layout_marginStart="5dp"
-        android:text="@string/ricardo"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@+id/tv_member1"
-        app:layout_constraintBottom_toTopOf="@+id/tv_member3"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member3"
-        android:layout_marginStart="5dp"
-        android:text="@string/aaron"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member2"
-        app:layout_constraintBottom_toTopOf="@id/tv_member4"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member4"
-        android:layout_marginStart="5dp"
-        android:text="@string/emerson"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member3"
-        app:layout_constraintBottom_toTopOf="@id/tv_member5"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member5"
-        android:layout_marginStart="5dp"
-        android:text="@string/manuel"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member4"
-        app:layout_constraintBottom_toTopOf="@id/tv_member6"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_member6"
-        android:layout_marginStart="5dp"
-        android:text="@string/jesus"
-        style="@style/aboutText"
-        app:layout_constraintTop_toBottomOf="@id/tv_member5"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:background="?attr/colorPrimary"
+        tools:context=".about.AboutFragment">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idCardView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:alpha="1"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:padding="15dp"
+                android:text="@string/aboutText"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idCardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
+            android:alpha="1"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/idCardView1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_about"
+                android:layout_width="match_parent"
+                android:layout_height="530dp"
+                android:layout_margin="10dp"
+
+                android:background="@drawable/button_rounded"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about"
+                app:layout_constraintVertical_bias="0.094" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

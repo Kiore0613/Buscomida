@@ -1,25 +1,37 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColor">@color/textColor</item>
+        <item name="colorWhite">@color/colorWhite</item>
+        <item name="colorInvertido">@color/colorInvertido</item>
+    </style>
+
+    <!-- Dark theme -->
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#633255</item>
+        <item name="textColor">#ffff</item>
+        <item name="colorInvertido">#00acc1</item>
     </style>
 
     <!-- Style NavigateView -->
-    <style name="navigate" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="navigate" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textSize">22sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:background">@color/colorAccent</item>
     </style>
 
-    <style name="aboutText" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textSize">18sp</item>
-        <item name="android:padding">3dp</item>
-        <item name="android:layout_margin">4dp</item>
+    <style name="aboutText" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">2dp</item>
 
     </style>
 
